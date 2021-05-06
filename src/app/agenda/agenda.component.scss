@@ -1,0 +1,23 @@
+.day-popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: visible;
+    opacity: 1;
+  }
+
+.day-box {
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    background: rgba(255, 255, 255, 1);
+    transition: opacity 500ms;
+    visibility: visible;
+    opacity: 1;
+  }

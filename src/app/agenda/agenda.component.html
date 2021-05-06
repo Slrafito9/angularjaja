@@ -1,0 +1,29 @@
+<p>{{viewDate | date:'MMMM YYYY'}}</p>
+<input type="button" value="Previous month" (click)="goToPrevMonth()">
+<input type="button" value="Next month" (click)="goToNextMonth()">
+<mwl-calendar-month-view
+  [viewDate]="viewDate"
+  [events]="events"
+  [weekendDays]="weekendDays"
+  [weekStartsOn]="weekStartsOn"
+  [refresh]="refreshCalendar"
+  (dayClicked)="onDayClicked($event)">
+</mwl-calendar-month-view>
+
+<div class="day-popup" *ngIf="showDayPopup">
+  <div class="day-box">
+    <input type="button" value="Save" (click)="onDayPopupCloseClicked(true)">
+    <input type="button" value="Cancel" (click)="onDayPopupCloseClicked(false)">
+    <div class="to-do-list">
+      <label>Lista de tareas:</label>
+      <div *ngFor="let item of currentDayData.toDoList; let i = index">
+        <input type="checkbox" [checked]="item.done" (click)="toggleToDoElement(i)">
+        <label>{{item.name}}</label>
+      </div>
+      <input id="new-to-do-element-box" type="text" placeholder="New task">
+      <input type="button" value="Add" (click)="onDayPopupAddToDoElement()">
+    </div>
+    <label>Notas:</label>
+    <textarea id="notes-box" (input)="onDayPopupNotesChanged()">{{currentDayData.notes}}</textarea>
+  </div>
+</div>
