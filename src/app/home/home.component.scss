@@ -1,0 +1,37 @@
+.home-button-icon
+{
+    height: 100%;
+}
+
+.first-button-div,
+.second-button-div,
+.third-button-div
+{
+   text-align: center;
+   height: 17vh;
+   padding-top: 5%;
+   margin-bottom: 10%;
+   float: left; 
+}
+
+.first-button-div
+{
+    margin-top: 3%;
+    margin-left: 20%;
+}
+.second-button-div
+{
+    margin-left: 15%;
+    margin-top: 10%;
+}
+.third-button-div
+{
+    margin-left: 15%;
+}
+
+label
+{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    font-size: 36px;
+}

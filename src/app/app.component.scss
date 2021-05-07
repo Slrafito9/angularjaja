@@ -1,0 +1,13 @@
+h1
+{
+    font-family: 'Custom', Fallback, sans-serif !important;
+    color: white;
+    font-size: 80px;
+    cursor: pointer;
+}
+
+@font-face
+{
+    font-family: 'Custom';
+    src: url('../assets/fonts/Friendly_Schoolmates_Regular_Font_by_Situjuh_7NTypes.otf') format('opentype');
+}

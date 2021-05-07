@@ -2,3 +2,12 @@
 
 /* Stylesheet for the calendar */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+html
+{
+    height: 100vh;
+    background-image: url('assets/images/background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

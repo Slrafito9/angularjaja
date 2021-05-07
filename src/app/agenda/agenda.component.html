@@ -1,6 +1,10 @@
-<p>{{viewDate | date:'MMMM YYYY'}}</p>
-<input type="button" value="Previous month" (click)="goToPrevMonth()">
-<input type="button" value="Next month" (click)="goToNextMonth()">
+<div class="date-div">
+  <p>{{viewDate | date:'MMMM YYYY'}}</p>
+</div>
+<div class="month-nav-div">
+  <input class="button" type="button" value="Previous month" (click)="goToPrevMonth()">
+  <input class="button" type="button" value="Next month" (click)="goToNextMonth()">
+</div>
 <mwl-calendar-month-view
   [viewDate]="viewDate"
   [events]="events"
@@ -12,18 +16,40 @@
 
 <div class="day-popup" *ngIf="showDayPopup">
   <div class="day-box">
-    <input type="button" value="Save" (click)="onDayPopupCloseClicked(true)">
-    <input type="button" value="Cancel" (click)="onDayPopupCloseClicked(false)">
+    <div class="date-div">
+      <p>{{currentDayData.date.toDateString()}}</p>
+    </div>
     <div class="to-do-list">
       <label>Lista de tareas:</label>
-      <div *ngFor="let item of currentDayData.toDoList; let i = index">
-        <input type="checkbox" [checked]="item.done" (click)="toggleToDoElement(i)">
-        <label>{{item.name}}</label>
+      <br>
+      <div class="to-do-list-inner">
+        <div *ngFor="let item of currentDayData.toDoList; let i = index">
+          <input type="checkbox" [checked]="item.done" (click)="toggleToDoElement(i)">
+          <label>{{item.name}}</label>
+        </div>
       </div>
-      <input id="new-to-do-element-box" type="text" placeholder="New task">
-      <input type="button" value="Add" (click)="onDayPopupAddToDoElement()">
+      <input id="new-to-do-element-box" type="text" placeholder="Nueva tarea">
+      <input class="button" type="button" value="Add" (click)="onDayPopupAddToDoElement()">
     </div>
-    <label>Notas:</label>
-    <textarea id="notes-box" (input)="onDayPopupNotesChanged()">{{currentDayData.notes}}</textarea>
+    <div class="notes-div">
+      <label>Notas:</label>
+      <textarea id="notes-box" (input)="onDayPopupNotesChanged()">{{currentDayData.notes}}</textarea>
+    </div>
+    <div class="custom-categories">
+      <label>Categorías personalizadas:</label>
+      <div class="custom-categories-inner">
+        <div *ngFor="let item of customCategories; let i = index">
+          <label>{{item}}</label>
+          <br>
+          <textarea [id]="'custom-category-box-' + item" class="custom-category-box" (input)="onCustomCategoryChanged(item)">{{currentDayData.customCategories.get(item)}}</textarea>
+        </div>
+      </div>
+      <input id="new-category-box" type="text" placeholder="Nueva categoría">
+      <input class="button" type="button" value="Add" (click)="onDayPopupAddCategory()">
+    </div>
+    <div class="button-div">
+      <input class="button" type="button" value="Save" (click)="onDayPopupCloseClicked(true)">
+      <input class="cancel-button" type="button" value="Cancel" (click)="onDayPopupCloseClicked(false)">
+    </div>
   </div>
 </div>
